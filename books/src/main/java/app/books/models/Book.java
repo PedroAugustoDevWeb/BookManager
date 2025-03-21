@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,6 @@ public class Book {
     private Long id;
 
     private String title;
-    
-    private Author author;
 
     private String description;  
 
@@ -38,7 +37,12 @@ public class Book {
     private LocalDate publishedDate;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
+      
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 
 
 
